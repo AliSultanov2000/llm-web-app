@@ -2,7 +2,7 @@
 FROM python:3.10
 
 # Install work directory
-WORKDIR /mysite
+WORKDIR /docker_app
 
 # Copy requirements.txt 
 COPY requirements.txt .
@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy all the code of app in docker container
-COPY . .
+COPY . /docker_app/
 
 # Run command to start docker app
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "mysite/manage.py", "runserver", "127.0.0.1:8000", "--noreload"]

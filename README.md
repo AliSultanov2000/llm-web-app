@@ -1,4 +1,4 @@
-![architecture](assets/django_acrhitecture.png)
+![architecture](assets/architecture.png)
 
 ## 🚀 Quick start
 

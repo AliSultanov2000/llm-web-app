@@ -1,6 +1,6 @@
 # LLM Web App 
 
-![architecture](assets/architecture.png)
+![architecture](assets/architecture.jpg)
 
 
 ## Todo:

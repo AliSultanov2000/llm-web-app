@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.shortcuts import render
 from django.template.loader import render_to_string
 
 slovar = {
@@ -24,14 +25,24 @@ def index(request):
     return HttpResponse(response)
     
  
-def get_person_type(request, sign_person_type: str):
-    description = slovar.get(sign_person_type, None)
-    if description:
-        return HttpResponse(f'<h2>{description}</h2>')
-    else:
-        return HttpResponseNotFound("Ошибочка вышла!")
+# def get_person_type(request, sign_person_type: str):
+#     description = slovar.get(sign_person_type, None)
+#     if description:
+#         return HttpResponse(f'<h2>{description}</h2>')
+#     else:
+#         return HttpResponseNotFound("Ошибочка вышла!")
 
   
+def get_person_type(request, sign_person_type: str):
+    description = slovar.get(sign_person_type, None)
+    desc = {
+        "person_type": sign_person_type.title(), 
+        "person_desc": description
+    }
+    return render(request, "polls/info.html", context=desc)  # Для динамичеких HTML
+
+
+
 def get_person_type_num(request, sign_person_type: int):
     person_types = list(slovar)
     if sign_person_type <= len(person_types) - 1:
@@ -46,5 +57,5 @@ def get_person_type_num(request, sign_person_type: int):
     
 
 def check_html_view(request):
-    response = render_to_string("polls/info.html")  # str
+    response = render_to_string("polls/info.html")  # Для статических HTML, переводит в str
     return HttpResponse(response)

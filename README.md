@@ -13,6 +13,18 @@
 
 #### CMD:
 ```sh
+git clone https://github.com/AliSultanov2000/llm-web-app
+```
+
+```
+pip install -r requirements.txt
+```
+
+```
+cd project
+```
+
+```sh
 python manage.py runserver
 ```
 
